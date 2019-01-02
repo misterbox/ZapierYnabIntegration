@@ -1,14 +1,19 @@
 {
-  "name": "zapier-platform-example-app-minimal",
+  "name": "zapier-ynab-integration",
   "version": "1.0.0",
-  "description": "An example app for the Zapier platform.",
-  "repository": "zapier/zapier-platform-example-app-minimal",
-  "homepage": "https://zapier.com/",
-  "author": "Bryan Helmig <bryan@zapier.com>",
+  "description": "A collection of triggers and actions to automate your YNAB budget",
+  "repository": "misterbox/ZapierYnabIntegration",
+  "homepage": "https://github.com/misterbox/ZapierYnabIntegration",
+  "author": "Skye Griffin <skybox@trioptimum.com>",
   "license": "BSD-3-Clause",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive"
+    "zapier-build": "tsc",
+    "zapier-dev": "tsc --watch",
+    "zapier-push": "npm run zapier-build && zapier push",
+    "prepare": "npm run zapier-build",
+    "pretest": "npm run zapier-build",
+    "test": "mocha --recursive lib/test"
   },
   "engines": {
     "node": "8.10.0",
@@ -18,7 +23,11 @@
     "zapier-platform-core": "7.6.0"
   },
   "devDependencies": {
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.18",
+    "@types/should": "^13.0.0",
     "mocha": "^5.2.0",
-    "should": "^13.2.0"
+    "should": "^13.2.0",
+    "typescript": "^3.2.2"
   }
 }
