@@ -1,7 +1,7 @@
-import { ZObject, HttpResponse } from 'zapier-platform-core';
+import { ZObject, HttpResponse, Bundle } from 'zapier-platform-core';
 import Constants from './constants';
 
-const getAccessToken = async (z: ZObject, bundle: any) => {
+const getAccessToken = async (z: ZObject, bundle: Bundle) => {
     const response: HttpResponse = await z.request(`${Constants.AUTH_BASE}/token`, {
         method: 'POST',
         params: {
@@ -20,7 +20,7 @@ const getAccessToken = async (z: ZObject, bundle: any) => {
     return response.json;
 };
 
-const refreshAccessToken = async (z: ZObject, bundle: any) => {
+const refreshAccessToken = async (z: ZObject, bundle: Bundle) => {
     const response: HttpResponse = await z.request(`${Constants.AUTH_BASE}/token`, {
         method: 'POST',
         params: {

@@ -1,6 +1,7 @@
 const { version } = require('../package.json');
 import { version as platformVersion } from 'zapier-platform-core';
 import Authentication from './authentication';
+import Middleware from './middleware';
 
 process.version;
 
@@ -10,7 +11,9 @@ const App = {
 
     authentication: Authentication,
 
-    beforeRequest: [],
+    beforeRequest: [
+        Middleware.addAuthHeader
+    ],
 
     afterResponse: [],
 
