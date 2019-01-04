@@ -54,14 +54,17 @@ const Transaction = {
             {
                 key: 'memo',
                 label: 'Memo',
-                required: true,
                 type: 'string'
             },
             {
-                key: 'isCleared',
+                key: 'cleared',
                 label: 'Cleared',
-                required: true,
-                type: 'boolean'
+                choices: ['cleared', 'uncleared', 'reconciled']
+            },
+            {
+                key: 'flagColor',
+                label: 'Flag Color',
+                choices: ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
             }
         ],
         perform: createTransaction
