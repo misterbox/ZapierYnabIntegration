@@ -44,6 +44,24 @@ const Transaction = {
                 label: 'Category',
                 required: true,
                 dynamic: 'category.id.name'
+            },
+            {
+                key: 'amount',
+                label: 'Transaction Amount',
+                required: true,
+                type: 'number'
+            },
+            {
+                key: 'memo',
+                label: 'Memo',
+                required: true,
+                type: 'string'
+            },
+            {
+                key: 'isCleared',
+                label: 'Cleared',
+                required: true,
+                type: 'boolean'
             }
         ],
         perform: createTransaction
