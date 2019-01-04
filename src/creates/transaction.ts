@@ -1,6 +1,6 @@
 import { ZObject, Bundle } from "zapier-platform-core";
 
-const createTransaction = (z: ZObject, bundle: Bundle) => {
+const createTransaction = async (z: ZObject, bundle: Bundle) => {
     return {}
 };
 
