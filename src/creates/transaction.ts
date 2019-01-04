@@ -18,7 +18,14 @@ const Transaction = {
                 key: 'budgetId',
                 label: 'Budget',
                 required: true,
-                dynamic: 'budget.id.name'
+                dynamic: 'budget.id.name',
+                altersDynamicFields: true
+            },
+            {
+                key: 'accountId',
+                label: 'Budget Account',
+                required: true,
+                dynamic: 'account.id.name'
             }
         ],
         perform: createTransaction
