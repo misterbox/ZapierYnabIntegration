@@ -14,10 +14,12 @@ const queryAccounts = async (z: ZObject, bundle: Bundle) => {
         let ynabAccounts: Account[] = ynabResponse.data.accounts;
 
         ynabAccounts.forEach((account: Account) => {
-            accounts.push({
-                id: account.id,
-                name: account.name
-            });
+            if (!account.closed) {
+                accounts.push({
+                    id: account.id,
+                    name: account.name
+                });
+            }
         });
     }
 

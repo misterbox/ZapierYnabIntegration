@@ -23,9 +23,27 @@ const Transaction = {
             },
             {
                 key: 'accountId',
-                label: 'Budget Account',
+                label: 'Account',
                 required: true,
                 dynamic: 'account.id.name'
+            },
+            {
+                key: 'date',
+                label: 'Transaction Date',
+                required: true,
+                type: 'datetime'
+            },
+            {
+                key: 'payeeName',
+                label: 'Payee',
+                required: true,
+                type: 'string'
+            },
+            {
+                key: 'categoryId',
+                label: 'Category',
+                required: true,
+                dynamic: 'category.id.name'
             }
         ],
         perform: createTransaction

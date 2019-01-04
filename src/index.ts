@@ -6,6 +6,7 @@ import Middleware from './middleware';
 import Transaction from './creates/transaction';
 import Budget from './resources/budget';
 import Account from './resources/account';
+import Category from './resources/category';
 
 process.version;
 
@@ -25,7 +26,8 @@ const App = {
 
     triggers: {
         [Budget.key]: Budget,
-        [Account.key]: Account
+        [Account.key]: Account,
+        [Category.key]: Category
     },
 
     searches: {},
