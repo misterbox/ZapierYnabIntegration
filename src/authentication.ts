@@ -49,7 +49,6 @@ const testAuth = async (z: ZObject) => {
     }
 
     const userData: any = response.json;
-    console.log('testAuth response: ', response);
 
     return userData.data.user;
 };

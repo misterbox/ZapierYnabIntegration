@@ -2,6 +2,8 @@ const { version } = require('../package.json');
 import { version as platformVersion } from 'zapier-platform-core';
 import Authentication from './authentication';
 import Middleware from './middleware';
+import Transaction from './creates/transaction';
+import Budget from './resources/budget';
 
 process.version;
 
@@ -19,11 +21,16 @@ const App = {
 
     resources: {},
 
-    triggers: {},
+    triggers: {
+        [Transaction.key]: Transaction,
+        [Budget.key]: Budget
+    },
 
     searches: {},
 
-    creates: {}
+    creates: {
+        [Transaction.key]: Transaction
+    }
 };
 
 export default App;
