@@ -5,30 +5,35 @@ import { CategoryGroup } from "../models/category-group";
 import { Category } from "../models/category";
 
 const queryCategories = async (z: ZObject, bundle: Bundle) => {
-    const response: HttpResponse = await z.request({
-        url: `${Constants.API_BASE}/budgets/${bundle.inputData.budgetId}/categories`
-    });
-    let categories: any[] = [];
-
-    if (response.json) {
-        let ynabResponse: YnabResponse = response.json;
-        let categoryGroups: CategoryGroup[] = ynabResponse.data.category_groups;
-
-        categoryGroups.forEach((group: CategoryGroup) => {
-            if (!group.hidden && !group.deleted) {
-                group.categories.forEach((category: Category) => {
-                    if (!category.hidden && !category.deleted) {
-                        categories.push({
-                            id: category.id,
-                            name: category.name
-                        });
-                    }
-                });
-            }
+    if (bundle.inputData.budgetId !== undefined) {
+        const response: HttpResponse = await z.request({
+            url: `${Constants.API_BASE}/budgets/${bundle.inputData.budgetId}/categories`
         });
-    }
+        let categories: any[] = [];
 
-    return categories;
+        if (response.json) {
+            let ynabResponse: YnabResponse = response.json;
+            let categoryGroups: CategoryGroup[] = ynabResponse.data.category_groups;
+
+            categoryGroups.forEach((group: CategoryGroup) => {
+                if (!group.hidden && !group.deleted) {
+                    group.categories.forEach((category: Category) => {
+                        if (!category.hidden && !category.deleted) {
+                            categories.push({
+                                id: category.id,
+                                name: category.name
+                            });
+                        }
+                    });
+                }
+            });
+
+            return categories;
+        }
+    }
+    else {
+        return [];
+    }
 };
 
 const Category = {
@@ -40,6 +45,13 @@ const Category = {
         hidden: true
     },
     operation: {
+        inputFields: [
+            {
+                key: 'budgetId',
+                label: 'Budget',
+                required: false
+            }
+        ],
         perform: queryCategories
     }
 };
