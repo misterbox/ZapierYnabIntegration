@@ -17,10 +17,12 @@ const App = {
     authentication: Authentication,
 
     beforeRequest: [
-        Middleware.addAuthHeader
+        Middleware.AddAuthHeader
     ],
 
-    afterResponse: [],
+    afterResponse: [
+        Middleware.HandleHttpError
+    ],
 
     resources: {},
 

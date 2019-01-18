@@ -16,11 +16,11 @@ describe('Transaction Creates', () => {
         const expectedCategoryId = 'category1';
         const bundle = {
             inputData: {
-                budgetId: expectedBudgetId,
-                accountId: expectedAccountId,
+                budget_id: expectedBudgetId,
+                account_id: expectedAccountId,
                 date: expectedDate,
-                payeeName: expectedPayeeName,
-                categoryId: expectedCategoryId,
+                payee_name: expectedPayeeName,
+                category_id: expectedCategoryId,
                 amount: expectedAmount
             }
         };
